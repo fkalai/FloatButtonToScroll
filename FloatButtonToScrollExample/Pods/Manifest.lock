@@ -1,0 +1,16 @@
+PODS:
+  - FloatButtonToScroll (1.0.0)
+
+DEPENDENCIES:
+  - FloatButtonToScroll (from `../FloatButtonToScroll/`)
+
+EXTERNAL SOURCES:
+  FloatButtonToScroll:
+    :path: "../FloatButtonToScroll/"
+
+SPEC CHECKSUMS:
+  FloatButtonToScroll: e145d279630b1d6b808258bb6087c8e951c29934
+
+PODFILE CHECKSUM: c4405d6f2676bd997c65cb6cf88f2228209bbb04
+
+COCOAPODS: 1.9.3

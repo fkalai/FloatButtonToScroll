@@ -1,0 +1,6 @@
+framework module Pods_FloatButtonToScrollExample {
+  umbrella header "Pods-FloatButtonToScrollExample-umbrella.h"
+
+  export *
+  module * { export * }
+}
