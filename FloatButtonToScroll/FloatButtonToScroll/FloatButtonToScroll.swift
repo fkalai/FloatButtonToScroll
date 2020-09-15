@@ -35,7 +35,7 @@ public class FloatButtonToScroll: UIButton {
     
     var contentOffsetY: CGFloat = 220
         
-    required init(_ parentView: UIView, verticalPotiotionY: CGFloat) {
+    public required init(_ parentView: UIView, verticalPotiotionY: CGFloat) {
         super.init(frame: .zero)
         
         self.parentView = parentView
