@@ -7,11 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B4C391E25113526002D997F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C391D25113526002D997F /* AppDelegate.swift */; };
+		7B4C392025113526002D997F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C391F25113526002D997F /* SceneDelegate.swift */; };
+		7B4C392225113526002D997F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C392125113526002D997F /* ViewController.swift */; };
+		7B4C392525113526002D997F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B4C392325113526002D997F /* Main.storyboard */; };
+		7B4C392725113529002D997F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B4C392625113529002D997F /* Assets.xcassets */; };
+		7B4C392A25113529002D997F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B4C392825113529002D997F /* LaunchScreen.storyboard */; };
 		7BEC04C2250E969200B61FD6 /* FloatButtonToScroll.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BEC04C0250E969200B61FD6 /* FloatButtonToScroll.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7BEC04C9250E970000B61FD6 /* FloatButtonToScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC04C8250E970000B61FD6 /* FloatButtonToScroll.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B4C391B25113526002D997F /* FloatButtonToScrollExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FloatButtonToScrollExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B4C391D25113526002D997F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7B4C391F25113526002D997F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7B4C392125113526002D997F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7B4C392425113526002D997F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7B4C392625113529002D997F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B4C392925113529002D997F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B4C392B25113529002D997F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BEC04BD250E969200B61FD6 /* FloatButtonToScroll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FloatButtonToScroll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BEC04C0250E969200B61FD6 /* FloatButtonToScroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FloatButtonToScroll.h; sourceTree = "<group>"; };
 		7BEC04C1250E969200B61FD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -19,6 +33,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7B4C391825113526002D997F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BEC04BA250E969200B61FD6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,9 +50,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B4C391C25113526002D997F /* FloatButtonToScrollExample */ = {
+			isa = PBXGroup;
+			children = (
+				7B4C391D25113526002D997F /* AppDelegate.swift */,
+				7B4C391F25113526002D997F /* SceneDelegate.swift */,
+				7B4C392125113526002D997F /* ViewController.swift */,
+				7B4C392325113526002D997F /* Main.storyboard */,
+				7B4C392625113529002D997F /* Assets.xcassets */,
+				7B4C392825113529002D997F /* LaunchScreen.storyboard */,
+				7B4C392B25113529002D997F /* Info.plist */,
+			);
+			path = FloatButtonToScrollExample;
+			sourceTree = "<group>";
+		};
 		7BEC04B3250E969200B61FD6 = {
 			isa = PBXGroup;
 			children = (
+				7B4C391C25113526002D997F /* FloatButtonToScrollExample */,
 				7BEC04BF250E969200B61FD6 /* FloatButtonToScroll */,
 				7BEC04BE250E969200B61FD6 /* Products */,
 			);
@@ -41,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				7BEC04BD250E969200B61FD6 /* FloatButtonToScroll.framework */,
+				7B4C391B25113526002D997F /* FloatButtonToScrollExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +106,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		7B4C391A25113526002D997F /* FloatButtonToScrollExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B4C392E25113529002D997F /* Build configuration list for PBXNativeTarget "FloatButtonToScrollExample" */;
+			buildPhases = (
+				7B4C391725113526002D997F /* Sources */,
+				7B4C391825113526002D997F /* Frameworks */,
+				7B4C391925113526002D997F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FloatButtonToScrollExample;
+			productName = FloatButtonToScrollExample;
+			productReference = 7B4C391B25113526002D997F /* FloatButtonToScrollExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		7BEC04BC250E969200B61FD6 /* FloatButtonToScroll */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BEC04C5250E969200B61FD6 /* Build configuration list for PBXNativeTarget "FloatButtonToScroll" */;
@@ -93,9 +147,13 @@
 		7BEC04B4250E969200B61FD6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Fotis Kalaitzidis";
 				TargetAttributes = {
+					7B4C391A25113526002D997F = {
+						CreatedOnToolsVersion = 11.1;
+					};
 					7BEC04BC250E969200B61FD6 = {
 						CreatedOnToolsVersion = 11.1;
 						LastSwiftMigration = 1110;
@@ -116,11 +174,22 @@
 			projectRoot = "";
 			targets = (
 				7BEC04BC250E969200B61FD6 /* FloatButtonToScroll */,
+				7B4C391A25113526002D997F /* FloatButtonToScrollExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7B4C391925113526002D997F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B4C392A25113529002D997F /* LaunchScreen.storyboard in Resources */,
+				7B4C392725113529002D997F /* Assets.xcassets in Resources */,
+				7B4C392525113526002D997F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BEC04BB250E969200B61FD6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,6 +200,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7B4C391725113526002D997F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B4C392225113526002D997F /* ViewController.swift in Sources */,
+				7B4C391E25113526002D997F /* AppDelegate.swift in Sources */,
+				7B4C392025113526002D997F /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BEC04B9250E969200B61FD6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,7 +220,64 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		7B4C392325113526002D997F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B4C392425113526002D997F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7B4C392825113529002D997F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B4C392925113529002D997F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		7B4C392C25113529002D997F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4GBVZQ99S8;
+				INFOPLIST_FILE = FloatButtonToScrollExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.floatbuttontoscroll.example.gr.FloatButtonToScrollExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7B4C392D25113529002D997F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4GBVZQ99S8;
+				INFOPLIST_FILE = FloatButtonToScrollExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.floatbuttontoscroll.example.gr.FloatButtonToScrollExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		7BEC04C3250E969200B61FD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -193,7 +329,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -250,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -282,6 +418,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.floatbuttontoscroll.gr.FloatButtonToScroll;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -308,6 +445,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.floatbuttontoscroll.gr.FloatButtonToScroll;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -316,6 +454,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7B4C392E25113529002D997F /* Build configuration list for PBXNativeTarget "FloatButtonToScrollExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B4C392C25113529002D997F /* Debug */,
+				7B4C392D25113529002D997F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7BEC04B7250E969200B61FD6 /* Build configuration list for PBXProject "FloatButtonToScroll" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
