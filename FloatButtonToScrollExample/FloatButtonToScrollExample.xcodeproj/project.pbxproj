@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B54B875251749110019DF2C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B54B874251749110019DF2C /* TableViewCell.swift */; };
 		7BA9F56325114CAB002626EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA9F56225114CAB002626EE /* AppDelegate.swift */; };
 		7BA9F56525114CAB002626EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA9F56425114CAB002626EE /* SceneDelegate.swift */; };
 		7BA9F56725114CAB002626EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA9F56625114CAB002626EE /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		515E447050E6EAAA99A6C1A9 /* Pods-FloatButtonToScrollExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FloatButtonToScrollExample.release.xcconfig"; path = "Target Support Files/Pods-FloatButtonToScrollExample/Pods-FloatButtonToScrollExample.release.xcconfig"; sourceTree = "<group>"; };
 		6CB84295080EDFBF3C930899 /* Pods_FloatButtonToScrollExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FloatButtonToScrollExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B54B874251749110019DF2C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		7BA9F55F25114CAB002626EE /* FloatButtonToScrollExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FloatButtonToScrollExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BA9F56225114CAB002626EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BA9F56425114CAB002626EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				7BA9F56B25114CAD002626EE /* Assets.xcassets */,
 				7BA9F56D25114CAD002626EE /* LaunchScreen.storyboard */,
 				7BA9F57025114CAD002626EE /* Info.plist */,
+				7B54B874251749110019DF2C /* TableViewCell.swift */,
 			);
 			path = FloatButtonToScrollExample;
 			sourceTree = "<group>";
@@ -88,7 +91,6 @@
 				8DFF10FB177D0D3A72757420 /* Pods-FloatButtonToScrollExample.debug.xcconfig */,
 				515E447050E6EAAA99A6C1A9 /* Pods-FloatButtonToScrollExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BA9F56725114CAB002626EE /* ViewController.swift in Sources */,
+				7B54B875251749110019DF2C /* TableViewCell.swift in Sources */,
 				7BA9F56325114CAB002626EE /* AppDelegate.swift in Sources */,
 				7BA9F56525114CAB002626EE /* SceneDelegate.swift in Sources */,
 			);
