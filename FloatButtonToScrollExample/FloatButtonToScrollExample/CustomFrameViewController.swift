@@ -34,11 +34,14 @@ class CustomFrameViewController: UIViewController {
         
         // Setup the possition
         floatButtonToScroll.verticalAlignment = .bottom(80)
-        floatButtonToScroll.horizontalAlignment = .right(12)
+        floatButtonToScroll.horizontalAlignment = .right(0)
+        
+        // Setup Custom view
+        floatButtonToScroll.setupCustomFrame(backgroundColor: .darkGray, cornerRadius: [.topLeft, .bottomLeft], radius: 4, borderColor: UIColor.green.cgColor,borderWidth: 2)
         
         // Setup the contentOffsetY, the default is 220
         // It's abbout to shown after the cell 90 dissapears
-        floatButtonToScroll.contentOffsetY = CGFloat(((list.count / 2) - 10) * 45) // 100 * cell height
+        floatButtonToScroll.contentOffsetY = CGFloat(((list.count / 2) - 40) * 45) // 100 * cell height
         
         // Add the float Button where you want
         floatButtonToScroll.addToView(self.view)

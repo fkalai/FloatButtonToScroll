@@ -72,7 +72,6 @@ public class FloatButtonToScroll: UIButton {
     open weak var delegate: FloatButtonToScrollDelegate?
     fileprivate var verticalPotitionY: CGFloat? = 0.0
     fileprivate weak var view: UIView?
-    fileprivate var customView: UIView?
     
     // MARK: - 🏗 Constraints
     fileprivate var topConstraint: NSLayoutConstraint?
@@ -94,8 +93,18 @@ public class FloatButtonToScroll: UIButton {
         var constraints: [NSLayoutConstraint] = []
         constraints.removeAll()
         
-        heightConstraint = self.heightAnchor.constraint(equalToConstant: size)
-        widthConstraint = self.widthAnchor.constraint(equalToConstant: size)
+        if let width = widthSize {
+            
+            heightConstraint = self.heightAnchor.constraint(equalToConstant: size)
+            widthConstraint = self.widthAnchor.constraint(equalToConstant: width)
+            
+            self.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        }
+        else {
+            
+            heightConstraint = self.heightAnchor.constraint(equalToConstant: size)
+            widthConstraint = self.widthAnchor.constraint(equalToConstant: size)
+        }
         
         /// `Switch` parameters
         switch (horizontalAlignment, verticalAlignment) {
@@ -214,10 +223,6 @@ public class FloatButtonToScroll: UIButton {
      */
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        let view = UIView(frame: frame)
-        customView = view
-        customView?.backgroundColor = .clear
         size = frame.height
         widthSize = frame.width
         self.alpha = 0
@@ -249,32 +254,28 @@ public class FloatButtonToScroll: UIButton {
     public func addToView(_ view: UIView) {
         
         self.view = view
+        view.addSubview(self)
         
-        if let customView = customView {
-            customView.addSubview(self)
-            view.addSubview(customView)
-        }
-        else {
-            view.addSubview(self)
+        if self.imageView?.image == nil {
+            let image = UIImage(named: "arrow_up.png", in: Bundle(for: type(of: self)), compatibleWith: nil)
+            self.setImage(image, for: .normal)
         }
         
-        self.setImage(UIImage(named: "arrow_up.png", in: Bundle(for: type(of: self)), compatibleWith: nil), for: .normal)
+        self.imageView?.contentMode = .scaleAspectFit
         self.addTarget(self, action: #selector(backToTopButtonTouchUpInside), for: .touchUpInside)
     }
     
     // MARK: - ⚙️ Setup View
-    public func setupCustomView(backgroundColor color: UIColor, borderColor: CGColor?, borderWidth: CGFloat? = 1) {
+    public func setupCustomFrame(backgroundColor color: UIColor, cornerRadius: UIRectCorner?, radius: CGFloat?, borderColor: CGColor? = nil, borderWidth: CGFloat?) {
         
-        guard let customView = customView else { return }
+        guard let _ = widthSize else { return }
         
-        customView.backgroundColor = color
-        customView.layer.cornerRadius = customView.frame.height / 2
-        customView.layer.masksToBounds = true
-        
-        customView.layer.borderColor = borderColor
-        if let borderWidth = borderWidth {
-            customView.layer.borderWidth = borderWidth
+        if let corners = cornerRadius {
+            self.roundCorner(corners, radius: radius ?? 4)
+            self.layer.masksToBounds = true
         }
+        if let borderWidth = borderWidth { self.layer.borderWidth = borderWidth }
+        if let borderColor = borderColor { self.layer.borderColor = borderColor }
     }
     
     /**
@@ -324,5 +325,18 @@ public class FloatButtonToScroll: UIButton {
             
             self.alpha = 0
         }
+    }
+}
+
+private extension UIView {
+    
+    func roundCorner(_ corners: UIRectCorner, radius: CGFloat) {
+        
+        let path = UIBezierPath(roundedRect: self.bounds,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
     }
 }
