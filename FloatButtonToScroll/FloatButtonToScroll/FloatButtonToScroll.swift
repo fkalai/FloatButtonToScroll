@@ -39,7 +39,6 @@ public enum HorizontalAlignment: Alignment {
     case left(CGFloat)
     case right(CGFloat)
     case center
-    case custom
 }
 
 /// Defines a vertical alignment for UI element
@@ -47,8 +46,6 @@ public enum VerticalAlignment: Alignment {
     
     case top(CGFloat)
     case bottom(CGFloat)
-    case center
-    case custom
 }
 
 // MARK: - 🕹 Action Protocol
@@ -75,8 +72,9 @@ public class FloatButtonToScroll: UIButton {
     open weak var delegate: FloatButtonToScrollDelegate?
     fileprivate var verticalPotitionY: CGFloat? = 0.0
     fileprivate weak var view: UIView?
+    fileprivate var customView: UIView?
     
-    // Constraints
+    // MARK: - 🏗 Constraints
     fileprivate var topConstraint: NSLayoutConstraint?
     fileprivate var bottomConstraint: NSLayoutConstraint?
     fileprivate var centerYConstraint: NSLayoutConstraint?
@@ -87,7 +85,8 @@ public class FloatButtonToScroll: UIButton {
     fileprivate var widthConstraint: NSLayoutConstraint?
     fileprivate var savedConstraints: [NSLayoutConstraint] = []
     
-    /// The constraints return func depence on Alignment sets
+    /// The `buttonConstraints` func returns the constraints
+    /// depending the Alignment sets.
     private func buttonConstraints() -> [NSLayoutConstraint] {
         
         guard let parent = view else { return [] }
@@ -98,7 +97,9 @@ public class FloatButtonToScroll: UIButton {
         heightConstraint = self.heightAnchor.constraint(equalToConstant: size)
         widthConstraint = self.widthAnchor.constraint(equalToConstant: size)
         
+        /// `Switch` parameters
         switch (horizontalAlignment, verticalAlignment) {
+            
         /// `Bottom` positions
         case (.right(let trailing), .bottom(let bottom)):
             
@@ -115,29 +116,57 @@ public class FloatButtonToScroll: UIButton {
             
         case (.left(let leading), .bottom(let bottom)):
             
-            trailingConstraint = self.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: leading)
+            leadingConstraint = self.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: leading)
             bottomConstraint = parent.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottom)
             
             constraints.append(contentsOf: [heightConstraint!,
                                             widthConstraint!,
-                                            trailingConstraint!,
+                                            leadingConstraint!,
                                             bottomConstraint!])
             
             savedConstraints = constraints
             return constraints
             
-        case (.center, .bottom):
+        case (.center, .bottom(let bottom)):
             
+            centerXConstraint = self.centerXAnchor.constraint(equalTo: parent.centerXAnchor)
+            bottomConstraint = parent.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottom)
+            
+            constraints.append(contentsOf: [heightConstraint!,
+                                            widthConstraint!,
+                                            bottomConstraint!,
+                                            centerXConstraint!])
+            
+            savedConstraints = constraints
             return constraints
         
         /// `Top` position
-        case (.right, .top):
+        case (.right(let trailing), .top(let top)):
             
+            trailingConstraint = parent.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailing)
+            topConstraint = self.topAnchor.constraint(equalTo: parent.topAnchor, constant: top)
+            
+            constraints.append(contentsOf: [heightConstraint!,
+                                            widthConstraint!,
+                                            trailingConstraint!,
+                                            topConstraint!])
+            
+            savedConstraints = constraints
             return constraints
             
-        case (.left, .top):
+        case (.left(let leading), .top(let top)):
             
+            leadingConstraint = self.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: leading)
+            topConstraint = self.topAnchor.constraint(equalTo: parent.topAnchor, constant: top)
+            
+            constraints.append(contentsOf: [heightConstraint!,
+                                            widthConstraint!,
+                                            leadingConstraint!,
+                                            topConstraint!])
+            
+            savedConstraints = constraints
             return constraints
+            
         case (.center, .top(let top)):
             
             centerXConstraint = self.centerXAnchor.constraint(equalTo: parent.centerXAnchor)
@@ -147,25 +176,22 @@ public class FloatButtonToScroll: UIButton {
                                             widthConstraint!,
                                             topConstraint!,
                                             centerXConstraint!])
+            
             savedConstraints = constraints
             return constraints
-            
-        default: return []
         }
     }
     
-    // Setable Variables
-    var size: CGFloat = 32.0 {
-        
-        didSet {
-            
-            setupSize()
-        }
-    }
+    
+    // MARK: - 🔸 Other Properties
+    /// Same size for height and Width
+    fileprivate var size: CGFloat = 32.0
+    fileprivate var widthSize: CGFloat?
     
     /// Set the contentOffset Y where button will be shown.
     public var contentOffsetY: CGFloat = 220
     
+    // MARK: - 🛠 Init
     /**
      Initialize with default property
      */
@@ -189,34 +215,19 @@ public class FloatButtonToScroll: UIButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        size = min(frame.size.width, frame.size.height)
+        let view = UIView(frame: frame)
+        customView = view
+        customView?.backgroundColor = .clear
+        size = frame.height
+        widthSize = frame.width
         self.alpha = 0
     }
     
-    public func addToView(_ view: UIView) {
-        
-        self.view = view
-        view.addSubview(self)
-        
-        self.setImage(UIImage(named: "arrow_up.png", in: Bundle(for: type(of: self)), compatibleWith: nil), for: .normal)
-        self.addTarget(self, action: #selector(backToTopButtonTouchUpInside), for: .touchUpInside)
-    }
-    
-    private func addButtonConstraints(_ constraints: [NSLayoutConstraint]) {
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(buttonConstraints())
-    }
-        
-    deinit {
-        
-        print("--- dealloc @<BackToTopButton> Does not has Retain Cycle")
-    }
-    
-    public required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    /**
+     After Initialize the Button the didMoveToSuperview is called
+     and setups the constraints
+     */
+    // MARK: - 🔩 Setup Constraints
     override public func didMoveToSuperview() {
         
         guard let _ = view else { return }
@@ -226,6 +237,60 @@ public class FloatButtonToScroll: UIButton {
         NSLayoutConstraint.activate(buttonConstraints())
     }
     
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - 🆘 Add Subview
+    /**
+     With out using this func the FloatButtonToScroll will never
+     be shown on the view.
+     */
+    public func addToView(_ view: UIView) {
+        
+        self.view = view
+        
+        if let customView = customView {
+            customView.addSubview(self)
+            view.addSubview(customView)
+        }
+        else {
+            view.addSubview(self)
+        }
+        
+        self.setImage(UIImage(named: "arrow_up.png", in: Bundle(for: type(of: self)), compatibleWith: nil), for: .normal)
+        self.addTarget(self, action: #selector(backToTopButtonTouchUpInside), for: .touchUpInside)
+    }
+    
+    // MARK: - ⚙️ Setup View
+    public func setupCustomView(backgroundColor color: UIColor, borderColor: CGColor?, borderWidth: CGFloat? = 1) {
+        
+        guard let customView = customView else { return }
+        
+        customView.backgroundColor = color
+        customView.layer.cornerRadius = customView.frame.height / 2
+        customView.layer.masksToBounds = true
+        
+        customView.layer.borderColor = borderColor
+        if let borderWidth = borderWidth {
+            customView.layer.borderWidth = borderWidth
+        }
+    }
+    
+    /**
+     Just for checking that our button does not contain any Retain Cycle
+     */
+    deinit {
+        
+        print("--- dealloc @<BackToTopButton> Does not has Retain Cycle")
+    }
+    
+    // MARK: - 📱 Scroll Did Scroll
+    /**
+     Call this func into the scrollViewDidScroll and with parsing your
+     scrollView the FloatButtonToScroll will be animated show and hide
+     depence of the contentOffsetY.
+     */
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if scrollView.contentOffset.y > contentOffsetY {
@@ -238,43 +303,13 @@ public class FloatButtonToScroll: UIButton {
         }
     }
     
-    func setupNSLayoutConstraints(withConstraints constraints: [NSLayoutConstraint]) {
-        
-        let staticConstraints = [topConstraint, bottomConstraint, centerXConstraint, centerYConstraint].compactMap { $0 }
-        
-        savedConstraints.append(contentsOf: staticConstraints)
-        savedConstraints.append(contentsOf: self.constraints)
-        
-        NSLayoutConstraint.deactivate(savedConstraints)
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(constraints)
-        
-        savedConstraints = constraints
-    }
-    
-    func setupSize() {
-        
-        let constraints = self.constraints
-        
-        for constraint in constraints {
-            if constraint.isActive && (constraint.firstAnchor.isEqual(heightAnchor) || constraint.firstAnchor.isEqual(widthAnchor)) {
-                
-                constraint.constant = size
-            }
-        }
-        
-        NSLayoutConstraint.deactivate(self.constraints)
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    // MARK: Action
+    // MARK: - 🤹‍♀️ Action
     @objc func backToTopButtonTouchUpInside() {
         
         delegate?.didPressBackToTop(self)
     }
     
-    // MARK: Animations
+    // MARK: - 🚀 Animations
     func animatedShow() {
         
         UIView.animate(withDuration: 0.6) {
@@ -288,16 +323,6 @@ public class FloatButtonToScroll: UIButton {
         UIView.animate(withDuration: 0.6) {
             
             self.alpha = 0
-        }
-    }
-}
-
-extension UIWindow {
-    static var key: UIWindow? {
-        if #available(iOS 13, *) {
-            return UIApplication.shared.windows.first { $0.isKeyWindow }
-        } else {
-            return UIApplication.shared.keyWindow
         }
     }
 }

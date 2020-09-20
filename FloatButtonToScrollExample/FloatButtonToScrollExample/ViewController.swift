@@ -7,37 +7,34 @@
 //
 
 import UIKit
-import FloatButtonToScroll
+
+public enum FloatButtonCell {
+    
+    case defaultCase
+    case customFrameCase
+    case sizeCase
+}
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var floatButtonToScroll: FloatButtonToScroll!
+    var sectionDescription: [FloatButtonCell] = []
     
     var list = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        for i in 0...200 {
-            
-            list.append(i)
-        }
+        setupSections()
+        tableView.reloadData()
+    }
+    
+    func setupSections() {
         
-        // Setup you button
-        floatButtonToScroll = FloatButtonToScroll()
-        
-        // Add Delegate
-        floatButtonToScroll.delegate = self
-        
-        // Setup the possition
-        floatButtonToScroll.verticalAlignment = .bottom(80)
-        floatButtonToScroll.horizontalAlignment = .left(10)
-        
-        // Add the float Button where you want
-        floatButtonToScroll.addToView(self.view)
+        sectionDescription.removeAll()
+        sectionDescription.append(contentsOf: [.defaultCase,
+                                               .customFrameCase,
+                                               .sizeCase])
         
         tableView.reloadData()
     }
@@ -45,30 +42,79 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return sectionDescription.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return list.count
+        switch sectionDescription[section] {
+        case .defaultCase:          return 1
+        case .customFrameCase:      return 1
+        case .sizeCase:             return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        switch sectionDescription[indexPath.section] {
+        case .defaultCase:          return 44
+        case .customFrameCase:      return 44
+        case .sizeCase:             return 44
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell else {
             fatalError("The dequeued cell is not an instance of TableViewCell.")
         }
-        cell.label.text = "Cell Number: \(self.list[indexPath.row])"
-        return cell
+        
+        switch sectionDescription[indexPath.section] {
+        case .defaultCase:
+            
+            cell.label.text = "Default FloatButton"
+            return cell
+            
+        case .customFrameCase:
+            
+            cell.label.text = "Custom FloatButton"
+            return cell
+            
+        case .sizeCase:
+            
+            cell.label.text = "Size FloatButton"
+            return cell
+        }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        floatButtonToScroll.scrollViewDidScroll(scrollView)
-    }
-}
-
-extension ViewController: FloatButtonToScrollDelegate {
-    
-    func didPressBackToTop(_ button: FloatButtonToScroll) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        print("Go to Scroll")
+        switch sectionDescription[indexPath.section] {
+        case .defaultCase:
+            
+            let vc = storyboard.instantiateViewController(withIdentifier: "DefaultPropertiesViewController") as! DefaultPropertiesViewController
+            self.present(vc, animated: true, completion: nil)
+            
+            break
+            
+        case .customFrameCase:
+            
+            let vc = storyboard.instantiateViewController(withIdentifier: "CustomFrameViewController") as! CustomFrameViewController
+            self.present(vc, animated: true, completion: nil)
+            
+            break
+            
+        case .sizeCase:
+            
+            let vc = storyboard.instantiateViewController(withIdentifier: "SizeToFitViewController") as! SizeToFitViewController
+            self.present(vc, animated: true, completion: nil)
+            
+            break
+        }
     }
 }

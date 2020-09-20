@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zmG-T9-tDm">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,9 +8,73 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="Ycx-9h-mHf">
+            <objects>
+                <viewController id="xS1-zb-W8q" customClass="ViewController" customModule="FloatButtonToScrollExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aIC-KF-fla"/>
+                        <viewControllerLayoutGuide type="bottom" id="uX5-fv-0nt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JED-qy-Nm1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o7w-z1-eC3">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" textLabel="FUw-ub-tgc" imageView="Wpe-Dr-qz0" style="IBUITableViewCellStyleDefault" id="g4y-FO-yfJ" customClass="TableViewCell" customModule="FloatButtonToScrollExample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g4y-FO-yfJ" id="uQ9-eE-IQf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FUw-ub-tgc">
+                                                    <rect key="frame" x="54" y="0.0" width="306" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="square.and.arrow.up.on.square" catalog="system" id="Wpe-Dr-qz0">
+                                                    <rect key="frame" x="15.5" y="9" width="23" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="FUw-ub-tgc" id="Af9-6y-p04"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="xS1-zb-W8q" id="g9a-AY-4Ib"/>
+                                    <outlet property="delegate" destination="xS1-zb-W8q" id="GMu-MS-Z6w"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="o7w-z1-eC3" firstAttribute="top" secondItem="aIC-KF-fla" secondAttribute="bottom" id="3jJ-jG-1JD"/>
+                            <constraint firstItem="uX5-fv-0nt" firstAttribute="top" secondItem="o7w-z1-eC3" secondAttribute="bottom" id="7DM-fn-UmS"/>
+                            <constraint firstAttribute="trailing" secondItem="o7w-z1-eC3" secondAttribute="trailing" id="Dtt-sg-W2b"/>
+                            <constraint firstItem="o7w-z1-eC3" firstAttribute="leading" secondItem="JED-qy-Nm1" secondAttribute="leading" id="zGJ-rT-ijd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ybA-3u-AyS"/>
+                    <connections>
+                        <outlet property="tableView" destination="o7w-z1-eC3" id="oWy-96-LJC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hv-Gl-KZ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="317.60000000000002" y="104.7976011994003"/>
+        </scene>
+        <!--Default Properties View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FloatButtonToScrollExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DefaultPropertiesViewController" id="BYZ-38-t0r" customClass="DefaultPropertiesViewController" customModule="FloatButtonToScrollExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wdb-LD-iZY"/>
                         <viewControllerLayoutGuide type="bottom" id="xlA-e0-BV3"/>
@@ -48,6 +112,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="1yW-DR-qIp"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="BbI-hk-8px"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -59,15 +127,162 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="yst-y6-qoT" id="VDU-1T-6W4"/>
+                        <outlet property="tableView" destination="yst-y6-qoT" id="pza-aJ-fU1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.40000000000001" y="101.19940029985008"/>
+            <point key="canvasLocation" x="1077.5999999999999" y="101.19940029985008"/>
+        </scene>
+        <!--Custom Frame View Controller-->
+        <scene sceneID="zjk-cU-dfZ">
+            <objects>
+                <viewController storyboardIdentifier="CustomFrameViewController" id="KKq-kG-mJx" customClass="CustomFrameViewController" customModule="FloatButtonToScrollExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LD2-1l-zYS"/>
+                        <viewControllerLayoutGuide type="bottom" id="4WZ-aa-AkY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rf1-We-A86">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yS5-L9-upK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" textLabel="FMO-rA-Cnd" imageView="JW3-tI-SlL" style="IBUITableViewCellStyleDefault" id="QCS-Lf-bft" customClass="TableViewCell" customModule="FloatButtonToScrollExample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QCS-Lf-bft" id="T1T-ue-zVK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FMO-rA-Cnd">
+                                                    <rect key="frame" x="54" y="0.0" width="306" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="pencil.circle.fill" catalog="system" id="JW3-tI-SlL">
+                                                    <rect key="frame" x="17" y="12" width="20" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="FMO-rA-Cnd" id="EdL-i3-gNo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="KKq-kG-mJx" id="CSR-lU-zbj"/>
+                                    <outlet property="delegate" destination="KKq-kG-mJx" id="Cu5-X6-axF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yS5-L9-upK" firstAttribute="leading" secondItem="Rf1-We-A86" secondAttribute="leading" id="72K-Ix-TSn"/>
+                            <constraint firstItem="yS5-L9-upK" firstAttribute="top" secondItem="LD2-1l-zYS" secondAttribute="bottom" id="IC4-mo-pW6"/>
+                            <constraint firstAttribute="trailing" secondItem="yS5-L9-upK" secondAttribute="trailing" id="ifI-9O-rkB"/>
+                            <constraint firstItem="4WZ-aa-AkY" firstAttribute="top" secondItem="yS5-L9-upK" secondAttribute="bottom" id="q7e-Bx-slN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="yS5-L9-upK" id="x2F-Sv-1K1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mzC-in-ORD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1812" y="102.99850074962519"/>
+        </scene>
+        <!--Size To Fit View Controller-->
+        <scene sceneID="Rsl-KA-SA4">
+            <objects>
+                <viewController storyboardIdentifier="SizeToFitViewController" id="VIF-hX-pgP" customClass="SizeToFitViewController" customModule="FloatButtonToScrollExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8UU-GJ-eUV"/>
+                        <viewControllerLayoutGuide type="bottom" id="kfx-3F-9t4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z78-LR-Nde">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zrS-lF-GEW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" textLabel="AmU-1v-0ys" imageView="KjM-Pi-3fJ" style="IBUITableViewCellStyleDefault" id="Age-CG-bFc" customClass="TableViewCell" customModule="FloatButtonToScrollExample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Age-CG-bFc" id="bc6-Uu-R1k">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AmU-1v-0ys">
+                                                    <rect key="frame" x="54" y="0.0" width="306" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="trash.circle.fill" catalog="system" id="KjM-Pi-3fJ">
+                                                    <rect key="frame" x="17" y="12" width="20" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="AmU-1v-0ys" id="Gf2-FQ-V9l"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="VIF-hX-pgP" id="2ZR-Q1-qUI"/>
+                                    <outlet property="delegate" destination="VIF-hX-pgP" id="WFD-oP-zCc"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zrS-lF-GEW" secondAttribute="trailing" id="IFe-Bl-VAv"/>
+                            <constraint firstItem="kfx-3F-9t4" firstAttribute="top" secondItem="zrS-lF-GEW" secondAttribute="bottom" id="gPT-UW-LQt"/>
+                            <constraint firstItem="zrS-lF-GEW" firstAttribute="leading" secondItem="z78-LR-Nde" secondAttribute="leading" id="kqK-BP-XkI"/>
+                            <constraint firstItem="zrS-lF-GEW" firstAttribute="top" secondItem="8UU-GJ-eUV" secondAttribute="bottom" id="wOw-yR-oh7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="zrS-lF-GEW" id="Tvv-Jd-Nkl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f6A-UX-yHv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2500" y="104.7976011994003"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e9u-DE-HSv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zmG-T9-tDm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DhO-Gw-SUd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xS1-zb-W8q" kind="relationship" relationship="rootViewController" id="gGd-1A-vbK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8dh-aK-zLv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-621.60000000000002" y="104.7976011994003"/>
         </scene>
     </scenes>
     <resources>
         <image name="eye.fill" catalog="system" width="64" height="38"/>
+        <image name="pencil.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="square.and.arrow.up.on.square" catalog="system" width="58" height="64"/>
+        <image name="trash.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>
