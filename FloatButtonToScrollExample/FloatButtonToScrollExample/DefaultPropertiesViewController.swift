@@ -20,6 +20,15 @@ class DefaultPropertiesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var topPadding: CGFloat = 0.0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            
+            if let tPadding = window?.safeAreaInsets.top {
+                topPadding = tPadding
+            }
+        }
+        
         for i in 0...200 {
             
             list.append(i)
@@ -28,13 +37,20 @@ class DefaultPropertiesViewController: UIViewController {
         // Setup you button
         floatButtonToScroll = FloatButtonToScroll()
         
+        // Set Image
+        floatButtonToScroll.setImage(UIImage(named: "arrow_up"), for: .normal)
+        
+        // Set backgroundColor
+        floatButtonToScroll.backgroundColor = UIColor.lightGray
+        floatButtonToScroll.layer.cornerRadius = floatButtonToScroll.frame.height / 2
+        
         // Add Delegate
         floatButtonToScroll.delegate = self
         floatButtonToScroll.addObserver(tableView, scrollingTo: .bottom)
         
         // Setup the possition
-        floatButtonToScroll.verticalAlignment = .bottom(80)
-        floatButtonToScroll.horizontalAlignment = .right(10)
+        floatButtonToScroll.verticalAlignment = .top(topPadding + (self.navigationController?.navigationBar.frame.height ?? 0.0) + 26)
+        floatButtonToScroll.horizontalAlignment = .center
         
         // Set your image
         //floatButtonToScroll.setImage(image, for: .normal)

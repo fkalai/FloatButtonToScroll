@@ -98,21 +98,21 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         case .defaultCase:
             
             let vc = storyboard.instantiateViewController(withIdentifier: "DefaultPropertiesViewController") as! DefaultPropertiesViewController
-            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
             
             break
             
         case .customFrameCase:
             
             let vc = storyboard.instantiateViewController(withIdentifier: "CustomFrameViewController") as! CustomFrameViewController
-            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
             
             break
             
         case .sizeCase:
             
             let vc = storyboard.instantiateViewController(withIdentifier: "SizeToFitViewController") as! SizeToFitViewController
-            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
             
             break
         }

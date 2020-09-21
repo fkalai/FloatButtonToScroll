@@ -20,6 +20,15 @@ class SizeToFitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var bottomPadding: CGFloat = 0.0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            
+            if let bPadding = window?.safeAreaInsets.bottom {
+                bottomPadding = bPadding
+            }
+        }
+        
         for i in 0...200 {
             
             list.append(i)
@@ -39,7 +48,7 @@ class SizeToFitViewController: UIViewController {
         floatButtonToScroll.delegate = self
         
         // Setup the possition
-        floatButtonToScroll.verticalAlignment = .bottom(80)
+        floatButtonToScroll.verticalAlignment = .bottom(bottomPadding + 28)
         floatButtonToScroll.horizontalAlignment = .right(8)
         
         // Setup the contentOffsetY, the default is 220
@@ -52,6 +61,16 @@ class SizeToFitViewController: UIViewController {
         tableView.reloadData()
     }
 
+    func setButtonDone() {
+        
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(dismissTap))
+        
+        navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    @objc func dismissTap() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension SizeToFitViewController: UITableViewDataSource, UITableViewDelegate {

@@ -255,12 +255,6 @@ public class FloatButtonToScroll: UIButton {
         
         self.view = view
         view.addSubview(self)
-        
-        if self.imageView?.image == nil {
-            let image = UIImage(named: "arrow_up.png", in: Bundle(for: type(of: self)), compatibleWith: nil)
-            self.setImage(image, for: .normal)
-        }
-        
         self.imageView?.contentMode = .scaleAspectFit
         self.addTarget(self, action: #selector(backToTopButtonTouchUpInside), for: .touchUpInside)
     }
@@ -270,7 +264,8 @@ public class FloatButtonToScroll: UIButton {
      */
     deinit {
         
-        print("--- dealloc @<BackToTopButton> Does not has Retain Cycle")
+        NotificationCenter.default.removeObserver(self)
+        print("--- dealloc @<FloatButtonToScroll> Does not has Retain Cycle")
     }
     
     // MARK: - ⚙️ Scroll Did Scroll

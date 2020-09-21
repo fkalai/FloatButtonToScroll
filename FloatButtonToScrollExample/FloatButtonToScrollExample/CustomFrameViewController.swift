@@ -19,6 +19,15 @@ class CustomFrameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var bottomPadding: CGFloat = 0.0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            
+            if let bPadding = window?.safeAreaInsets.bottom {
+                bottomPadding = bPadding
+            }
+        }
 
         for i in 0...200 {
             
@@ -29,33 +38,32 @@ class CustomFrameViewController: UIViewController {
         let frame = CGRect(x: 0, y: 0, width: 58, height: 32)
         floatButtonToScroll = FloatButtonToScroll(frame: frame)
         
+        // Set Image
+        floatButtonToScroll.setImage(UIImage(named: "arrow_down"), for: .normal)
+        
         // Add Delegate
         floatButtonToScroll.delegate = self
         
         // Setup the possition
-        floatButtonToScroll.verticalAlignment = .bottom(80)
+        floatButtonToScroll.verticalAlignment = .bottom(bottomPadding + 28)
         floatButtonToScroll.horizontalAlignment = .right(10)
         
         // Customize your button with the default proccess
-        floatButtonToScroll.backgroundColor = UIColor.darkGray.withAlphaComponent(0.4)
+        floatButtonToScroll.backgroundColor = UIColor.darkGray.withAlphaComponent(0.8)
         floatButtonToScroll.layer.cornerRadius = floatButtonToScroll.frame.height / 2
         floatButtonToScroll.layer.masksToBounds = true
-        
-        // Setup the contentOffsetY, the default is 220
-        // It's abbout to shown after the cell 90 dissapears
-        floatButtonToScroll.contentOffsetY = CGFloat(((list.count / 2) - 40) * 45) // 100 * cell height
-        
+                
         // Add the float Button where you want
         floatButtonToScroll.addToView(self.view)
         
         tableView.reloadData()
-        tableView.setContentOffset(CGPoint(x: 0, y: CGFloat.greatestFiniteMagnitude), animated: false)
+        tableView.scrollTableViewToBottom(animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        floatButtonToScroll.contentOffsetY = tableView.contentOffset.y - 100
+        floatButtonToScroll.contentOffsetY = tableView.contentOffset.y - (6 * 45)
     }
 }
 
