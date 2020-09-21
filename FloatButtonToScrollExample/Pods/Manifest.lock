@@ -1,7 +1,7 @@
 PODS:
-  - FloatButtonToScroll (1.0.1):
-    - FloatButtonToScroll/FloatButtonToScroll (= 1.0.1)
-  - FloatButtonToScroll/FloatButtonToScroll (1.0.1)
+  - FloatButtonToScroll (1.1.0):
+    - FloatButtonToScroll/FloatButtonToScroll (= 1.1.0)
+  - FloatButtonToScroll/FloatButtonToScroll (1.1.0)
 
 DEPENDENCIES:
   - FloatButtonToScroll (from `../FloatButtonToScroll/`)
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: "../FloatButtonToScroll/"
 
 SPEC CHECKSUMS:
-  FloatButtonToScroll: 18dd90f3ffd1e334fbae0957fed3d5028cd6d97e
+  FloatButtonToScroll: 653bbda61101ce41510b67ecfbeff1bae8e78c15
 
 PODFILE CHECKSUM: 8aec3a29d7e25e5faebe16e3da9536025ae2d25e
 

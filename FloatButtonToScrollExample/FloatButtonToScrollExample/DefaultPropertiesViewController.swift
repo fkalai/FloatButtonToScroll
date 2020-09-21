@@ -30,14 +30,18 @@ class DefaultPropertiesViewController: UIViewController {
         
         // Add Delegate
         floatButtonToScroll.delegate = self
+        floatButtonToScroll.addObserver(tableView, scrollingTo: .bottom)
         
         // Setup the possition
         floatButtonToScroll.verticalAlignment = .bottom(80)
-        floatButtonToScroll.horizontalAlignment = .right(12)
+        floatButtonToScroll.horizontalAlignment = .right(10)
+        
+        // Set your image
+        //floatButtonToScroll.setImage(image, for: .normal)
         
         // Setup the contentOffsetY, the default is 220
         // It's abbout to shown after the cell 90 dissapears
-        floatButtonToScroll.contentOffsetY = CGFloat(((list.count / 2) - 10) * 45) // 100 * cell height
+        floatButtonToScroll.contentOffsetY =  120
         
         // Add the float Button where you want
         floatButtonToScroll.addToView(self.view)
@@ -66,17 +70,13 @@ extension DefaultPropertiesViewController: UITableViewDataSource, UITableViewDel
         cell.label.text = "Cell Number: \(self.list[indexPath.row])"
         return cell
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        floatButtonToScroll.scrollViewDidScroll(scrollView)
-    }
 }
 
 extension DefaultPropertiesViewController: FloatButtonToScrollDelegate {
     
     func didPressBackToTop(_ button: FloatButtonToScroll) {
         
-        print("Go to Scroll")
+        let topRow = IndexPath(row: 0, section: 0)
+        self.tableView.scrollToRow(at: topRow, at: .top, animated: true)
     }
 }

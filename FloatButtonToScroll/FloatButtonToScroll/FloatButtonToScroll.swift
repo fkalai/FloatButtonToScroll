@@ -48,6 +48,12 @@ public enum VerticalAlignment: Alignment {
     case bottom(CGFloat)
 }
 
+public enum ScrollPosition {
+    
+    case top
+    case bottom
+}
+
 // MARK: - 🕹 Action Protocol
 
 @objc public protocol FloatButtonToScrollDelegate {
@@ -68,6 +74,7 @@ public class FloatButtonToScroll: UIButton {
     
     public var horizontalAlignment: HorizontalAlignment = .center
     public var verticalAlignment: VerticalAlignment = .top(20)
+    private var scrollPosition: ScrollPosition = .top
     
     open weak var delegate: FloatButtonToScrollDelegate?
     fileprivate var verticalPotitionY: CGFloat? = 0.0
@@ -82,7 +89,6 @@ public class FloatButtonToScroll: UIButton {
     fileprivate var trailingConstraint: NSLayoutConstraint?
     fileprivate var heightConstraint: NSLayoutConstraint?
     fileprivate var widthConstraint: NSLayoutConstraint?
-    fileprivate var savedConstraints: [NSLayoutConstraint] = []
     
     /// The `buttonConstraints` func returns the constraints
     /// depending the Alignment sets.
@@ -120,7 +126,6 @@ public class FloatButtonToScroll: UIButton {
                                             trailingConstraint!,
                                             bottomConstraint!])
             
-            savedConstraints = constraints
             return constraints
             
         case (.left(let leading), .bottom(let bottom)):
@@ -133,7 +138,6 @@ public class FloatButtonToScroll: UIButton {
                                             leadingConstraint!,
                                             bottomConstraint!])
             
-            savedConstraints = constraints
             return constraints
             
         case (.center, .bottom(let bottom)):
@@ -146,7 +150,6 @@ public class FloatButtonToScroll: UIButton {
                                             bottomConstraint!,
                                             centerXConstraint!])
             
-            savedConstraints = constraints
             return constraints
         
         /// `Top` position
@@ -160,7 +163,6 @@ public class FloatButtonToScroll: UIButton {
                                             trailingConstraint!,
                                             topConstraint!])
             
-            savedConstraints = constraints
             return constraints
             
         case (.left(let leading), .top(let top)):
@@ -173,7 +175,6 @@ public class FloatButtonToScroll: UIButton {
                                             leadingConstraint!,
                                             topConstraint!])
             
-            savedConstraints = constraints
             return constraints
             
         case (.center, .top(let top)):
@@ -186,7 +187,6 @@ public class FloatButtonToScroll: UIButton {
                                             topConstraint!,
                                             centerXConstraint!])
             
-            savedConstraints = constraints
             return constraints
         }
     }
@@ -265,19 +265,6 @@ public class FloatButtonToScroll: UIButton {
         self.addTarget(self, action: #selector(backToTopButtonTouchUpInside), for: .touchUpInside)
     }
     
-    // MARK: - ⚙️ Setup View
-    public func setupCustomFrame(backgroundColor color: UIColor, cornerRadius: UIRectCorner?, radius: CGFloat?, borderColor: CGColor? = nil, borderWidth: CGFloat?) {
-        
-        guard let _ = widthSize else { return }
-        
-        if let corners = cornerRadius {
-            self.roundCorner(corners, radius: radius ?? 4)
-            self.layer.masksToBounds = true
-        }
-        if let borderWidth = borderWidth { self.layer.borderWidth = borderWidth }
-        if let borderColor = borderColor { self.layer.borderColor = borderColor }
-    }
-    
     /**
      Just for checking that our button does not contain any Retain Cycle
      */
@@ -286,24 +273,40 @@ public class FloatButtonToScroll: UIButton {
         print("--- dealloc @<BackToTopButton> Does not has Retain Cycle")
     }
     
-    // MARK: - 📱 Scroll Did Scroll
+    // MARK: - ⚙️ Scroll Did Scroll
     /**
      Call this func into the scrollViewDidScroll and with parsing your
      scrollView the FloatButtonToScroll will be animated show and hide
      depence of the contentOffsetY.
      */
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView, scrollingTo: ScrollPosition) {
         
-        if scrollView.contentOffset.y > contentOffsetY {
+        switch scrollingTo {
+        case .top:
             
-            animatedShow()
-        }
-        else {
+            if scrollView.contentOffset.y < contentOffsetY {
+                
+                animatedShow()
+            }
+            else {
+                
+                animatedHide()
+            }
+            break
+        case .bottom:
             
-            animatedHide()
+            if scrollView.contentOffset.y > contentOffsetY {
+                
+                animatedShow()
+            }
+            else {
+                
+                animatedHide()
+            }
+            break
         }
     }
-    
+        
     // MARK: - 🤹‍♀️ Action
     @objc func backToTopButtonTouchUpInside() {
         
@@ -326,17 +329,44 @@ public class FloatButtonToScroll: UIButton {
             self.alpha = 0
         }
     }
-}
-
-private extension UIView {
     
-    func roundCorner(_ corners: UIRectCorner, radius: CGFloat) {
+    // MARK: - Observation ContentOffset
+    public func addObserver(_ tableView: UITableView, scrollingTo: ScrollPosition) {
         
-        let path = UIBezierPath(roundedRect: self.bounds,
-                                byRoundingCorners: corners,
-                                cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
+        scrollPosition = scrollingTo
+        tableView.addObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset), options: .new, context: nil)
+    }
+    
+    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        if keyPath == #keyPath(UIScrollView.contentOffset) {
+          
+            if let cgPoint = (change?.values.first) as? CGPoint {
+                
+                switch scrollPosition {
+                case .top:
+                    
+                    if cgPoint.y < contentOffsetY {
+
+                        animatedShow()
+                    }
+                    else {
+                         animatedHide()
+                    }
+                    break
+                case .bottom:
+                    
+                    if cgPoint.y > contentOffsetY {
+
+                        animatedShow()
+                    }
+                    else {
+                         animatedHide()
+                    }
+                    break
+                }
+                
+            }
+        }
     }
 }

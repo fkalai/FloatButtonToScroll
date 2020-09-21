@@ -26,18 +26,25 @@ class SizeToFitViewController: UIViewController {
         }
 
         // Setup you button
-        floatButtonToScroll = FloatButtonToScroll(size: 92)
+        floatButtonToScroll = FloatButtonToScroll(size: 48)
+        
+        // Set the Image
+        floatButtonToScroll.setImage(UIImage(named: "arrow-down")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        floatButtonToScroll.tintColor = .white
+        floatButtonToScroll.layer.cornerRadius = floatButtonToScroll.frame.height / 2
+        floatButtonToScroll.backgroundColor = UIColor(red: 102 / 255, green: 92 / 255, blue: 172 / 255, alpha: 1.0)
+        floatButtonToScroll.imageEdgeInsets = UIEdgeInsets(top: 8, left: 2, bottom: 8, right: 2)
         
         // Add Delegate
         floatButtonToScroll.delegate = self
         
         // Setup the possition
         floatButtonToScroll.verticalAlignment = .bottom(80)
-        floatButtonToScroll.horizontalAlignment = .right(12)
+        floatButtonToScroll.horizontalAlignment = .right(8)
         
         // Setup the contentOffsetY, the default is 220
         // It's abbout to shown after the cell 90 dissapears
-        floatButtonToScroll.contentOffsetY = CGFloat(((list.count / 2) - 10) * 45) // 100 * cell height
+        floatButtonToScroll.contentOffsetY = 4 * 45 // Cell * CellHeight
         
         // Add the float Button where you want
         floatButtonToScroll.addToView(self.view)
@@ -70,7 +77,7 @@ extension SizeToFitViewController: UITableViewDataSource, UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        floatButtonToScroll.scrollViewDidScroll(scrollView)
+        floatButtonToScroll.scrollViewDidScroll(scrollView, scrollingTo: .bottom)
     }
 }
 
@@ -78,6 +85,7 @@ extension SizeToFitViewController: FloatButtonToScrollDelegate {
     
     func didPressBackToTop(_ button: FloatButtonToScroll) {
         
-        print("Go to Scroll")
+        let topRow = IndexPath(row: 0, section: 0)
+        self.tableView.scrollToRow(at: topRow, at: .top, animated: true)
     }
 }

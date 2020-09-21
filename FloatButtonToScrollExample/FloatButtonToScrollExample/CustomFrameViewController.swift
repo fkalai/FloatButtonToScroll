@@ -26,7 +26,7 @@ class CustomFrameViewController: UIViewController {
         }
         
         // Setup you button
-        let frame = CGRect(x: 0, y: 0, width: 68, height: 32)
+        let frame = CGRect(x: 0, y: 0, width: 58, height: 32)
         floatButtonToScroll = FloatButtonToScroll(frame: frame)
         
         // Add Delegate
@@ -34,10 +34,12 @@ class CustomFrameViewController: UIViewController {
         
         // Setup the possition
         floatButtonToScroll.verticalAlignment = .bottom(80)
-        floatButtonToScroll.horizontalAlignment = .right(0)
+        floatButtonToScroll.horizontalAlignment = .right(10)
         
-        // Setup Custom view
-        floatButtonToScroll.setupCustomFrame(backgroundColor: .darkGray, cornerRadius: [.topLeft, .bottomLeft], radius: 4, borderColor: UIColor.green.cgColor,borderWidth: 2)
+        // Customize your button with the default proccess
+        floatButtonToScroll.backgroundColor = UIColor.darkGray.withAlphaComponent(0.4)
+        floatButtonToScroll.layer.cornerRadius = floatButtonToScroll.frame.height / 2
+        floatButtonToScroll.layer.masksToBounds = true
         
         // Setup the contentOffsetY, the default is 220
         // It's abbout to shown after the cell 90 dissapears
@@ -47,6 +49,13 @@ class CustomFrameViewController: UIViewController {
         floatButtonToScroll.addToView(self.view)
         
         tableView.reloadData()
+        tableView.setContentOffset(CGPoint(x: 0, y: CGFloat.greatestFiniteMagnitude), animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        floatButtonToScroll.contentOffsetY = tableView.contentOffset.y - 100
     }
 }
 
@@ -67,13 +76,24 @@ extension CustomFrameViewController: UITableViewDataSource, UITableViewDelegate 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell else {
             fatalError("The dequeued cell is not an instance of TableViewCell.")
         }
-        cell.label.text = "Cell Number: \(self.list[indexPath.row])"
+        
+        if indexPath.row % 2 == 0 {
+            
+            cell.label.textAlignment = .left
+            cell.label.text = "\(self.list[indexPath.row]): a meesage"
+        }
+        else {
+            
+            cell.label.textAlignment = .right
+            cell.label.text = "\(self.list[indexPath.row]): my replay"
+        }
+        
         return cell
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        floatButtonToScroll.scrollViewDidScroll(scrollView)
+        floatButtonToScroll.scrollViewDidScroll(scrollView, scrollingTo: .top)
     }
 }
 
@@ -81,6 +101,25 @@ extension CustomFrameViewController: FloatButtonToScrollDelegate {
     
     func didPressBackToTop(_ button: FloatButtonToScroll) {
         
-        print("Go to Scroll")
+        tableView.scrollTableViewToBottom(animated: true)
+    }
+}
+
+extension UITableView {
+    func scrollTableViewToBottom(animated: Bool) {
+        guard let dataSource = dataSource else { return }
+
+        var lastSectionWithAtLeasOneElements = (dataSource.numberOfSections?(in: self) ?? 1) - 1
+
+        while dataSource.tableView(self, numberOfRowsInSection: lastSectionWithAtLeasOneElements) < 1 {
+            lastSectionWithAtLeasOneElements -= 1
+        }
+
+        let lastRow = dataSource.tableView(self, numberOfRowsInSection: lastSectionWithAtLeasOneElements) - 1
+
+        guard lastSectionWithAtLeasOneElements > -1 && lastRow > -1 else { return }
+
+        let bottomIndex = IndexPath(item: lastRow, section: lastSectionWithAtLeasOneElements)
+        scrollToRow(at: bottomIndex, at: .bottom, animated: animated)
     }
 }
