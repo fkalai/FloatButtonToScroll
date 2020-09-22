@@ -34,32 +34,34 @@ class DefaultPropertiesViewController: UIViewController {
             list.append(i)
         }
 
-        // Setup you button
+        // Setup Default FloatButtonToScroll. The default value for both
+        // height and width is 32
         floatButtonToScroll = FloatButtonToScroll()
         
-        // Set Image
+        // Setup an Image the FloatButtonToScroll
         floatButtonToScroll.setImage(UIImage(named: "arrow_up"), for: .normal)
         
-        // Set backgroundColor
+        // Setup the backgroundColor if needed
         floatButtonToScroll.backgroundColor = UIColor.lightGray
         floatButtonToScroll.layer.cornerRadius = floatButtonToScroll.frame.height / 2
         
-        // Add Delegate
-        floatButtonToScroll.delegate = self
-        floatButtonToScroll.addObserver(tableView, scrollingTo: .bottom)
-        
-        // Setup the possition
+        // Setup the position. With the below settings the FloatButtonToScroll
+        // Will appear on the top/center of the View.
+        // Does not need to add any Constraints because the constraints will be
+        // set after the addToView(_ view: UIView) is called.
         floatButtonToScroll.verticalAlignment = .top(topPadding + (self.navigationController?.navigationBar.frame.height ?? 0.0) + 26)
         floatButtonToScroll.horizontalAlignment = .center
         
-        // Set your image
-        //floatButtonToScroll.setImage(image, for: .normal)
-        
-        // Setup the contentOffsetY, the default is 220
-        // It's abbout to shown after the cell 90 dissapears
+        // Setup the contentOffsetY for scrolling, the default is 220
+        // it depends when you need the FloatButtonToScroll to show
         floatButtonToScroll.contentOffsetY =  120
         
-        // Add the float Button where you want
+        // Set the delegate to self for the FloatButtonToScroll Action
+        // Or set your own target
+        floatButtonToScroll.delegate = self
+        
+        // Finally with addToView() we say the FloatButtonToScroll in which view
+        // will be added as a subview
         floatButtonToScroll.addToView(self.view)
         
         tableView.reloadData()
@@ -85,6 +87,11 @@ extension DefaultPropertiesViewController: UITableViewDataSource, UITableViewDel
         }
         cell.label.text = "Cell Number: \(self.list[indexPath.row])"
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        floatButtonToScroll.scrollViewDidScroll(scrollView, scrollingTo: .bottom)
     }
 }
 

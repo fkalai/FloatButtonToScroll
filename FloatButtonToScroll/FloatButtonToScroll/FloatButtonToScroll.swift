@@ -76,7 +76,13 @@ public class FloatButtonToScroll: UIButton {
     public var verticalAlignment: VerticalAlignment = .top(20)
     private var scrollPosition: ScrollPosition = .top
     
-    open weak var delegate: FloatButtonToScrollDelegate?
+    open weak var delegate: FloatButtonToScrollDelegate? {
+        
+        didSet {
+            self.addTarget(self, action: #selector(backToTopButtonTouchUpInside), for: .touchUpInside)
+        }
+    }
+    
     fileprivate var verticalPotitionY: CGFloat? = 0.0
     fileprivate weak var view: UIView?
     
@@ -256,7 +262,6 @@ public class FloatButtonToScroll: UIButton {
         self.view = view
         view.addSubview(self)
         self.imageView?.contentMode = .scaleAspectFit
-        self.addTarget(self, action: #selector(backToTopButtonTouchUpInside), for: .touchUpInside)
     }
     
     /**
@@ -322,46 +327,6 @@ public class FloatButtonToScroll: UIButton {
         UIView.animate(withDuration: 0.6) {
             
             self.alpha = 0
-        }
-    }
-    
-    // MARK: - Observation ContentOffset
-    public func addObserver(_ tableView: UITableView, scrollingTo: ScrollPosition) {
-        
-        scrollPosition = scrollingTo
-        tableView.addObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset), options: .new, context: nil)
-    }
-    
-    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if keyPath == #keyPath(UIScrollView.contentOffset) {
-          
-            if let cgPoint = (change?.values.first) as? CGPoint {
-                
-                switch scrollPosition {
-                case .top:
-                    
-                    if cgPoint.y < contentOffsetY {
-
-                        animatedShow()
-                    }
-                    else {
-                         animatedHide()
-                    }
-                    break
-                case .bottom:
-                    
-                    if cgPoint.y > contentOffsetY {
-
-                        animatedShow()
-                    }
-                    else {
-                         animatedHide()
-                    }
-                    break
-                }
-                
-            }
         }
     }
 }

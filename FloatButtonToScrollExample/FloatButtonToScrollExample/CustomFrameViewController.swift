@@ -34,26 +34,32 @@ class CustomFrameViewController: UIViewController {
             list.append(i)
         }
         
-        // Setup you button
+        // Setup Custom FloatButtonToScroll size with a frame.
         let frame = CGRect(x: 0, y: 0, width: 58, height: 32)
         floatButtonToScroll = FloatButtonToScroll(frame: frame)
         
-        // Set Image
+        // Setup an Image the FloatButtonToScroll
         floatButtonToScroll.setImage(UIImage(named: "arrow_down"), for: .normal)
-        
-        // Add Delegate
-        floatButtonToScroll.delegate = self
         
         // Setup the possition
         floatButtonToScroll.verticalAlignment = .bottom(bottomPadding + 28)
         floatButtonToScroll.horizontalAlignment = .right(10)
         
         // Customize your button with the default proccess
-        floatButtonToScroll.backgroundColor = UIColor.darkGray.withAlphaComponent(0.8)
+        // Setup an Image the FloatButtonToScroll
+        // Here I've made something like Viber button
+        floatButtonToScroll.setImage(UIImage(named: "arrow-down")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        floatButtonToScroll.tintColor = .white
         floatButtonToScroll.layer.cornerRadius = floatButtonToScroll.frame.height / 2
-        floatButtonToScroll.layer.masksToBounds = true
+        floatButtonToScroll.backgroundColor = UIColor(red: 102 / 255, green: 92 / 255, blue: 172 / 255, alpha: 1.0)
+        floatButtonToScroll.imageEdgeInsets = UIEdgeInsets(top: 8, left: 2, bottom: 8, right: 2)
+        
+        // Set the delegate to self for the FloatButtonToScroll Action
+        // Instead you can also add your own Target and
+        floatButtonToScroll.delegate = self
                 
-        // Add the float Button where you want
+        // Finally with addToView() we say the FloatButtonToScroll in which view
+        // will be added as a subview
         floatButtonToScroll.addToView(self.view)
         
         tableView.reloadData()

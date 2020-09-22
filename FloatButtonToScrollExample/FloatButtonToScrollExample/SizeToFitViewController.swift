@@ -34,26 +34,30 @@ class SizeToFitViewController: UIViewController {
             list.append(i)
         }
 
-        // Setup you button
+        // Setup Size FloatButtonToScroll will set both height and width to has
+        // the same size value
         floatButtonToScroll = FloatButtonToScroll(size: 48)
         
-        // Set the Image
-        floatButtonToScroll.setImage(UIImage(named: "arrow-down")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        floatButtonToScroll.tintColor = .white
-        floatButtonToScroll.layer.cornerRadius = floatButtonToScroll.frame.height / 2
-        floatButtonToScroll.backgroundColor = UIColor(red: 102 / 255, green: 92 / 255, blue: 172 / 255, alpha: 1.0)
-        floatButtonToScroll.imageEdgeInsets = UIEdgeInsets(top: 8, left: 2, bottom: 8, right: 2)
+        // Setup an Image the FloatButtonToScroll
+        floatButtonToScroll.setImage(UIImage(named: "arrow_up"), for: .normal)
         
-        // Add Delegate
-        floatButtonToScroll.delegate = self
+        // Setup an Image the FloatButtonToScroll
+        // Here I've made something like Viber button
+        floatButtonToScroll.backgroundColor = UIColor(red: 102 / 255, green: 92 / 255, blue: 172 / 255, alpha: 1.0)
+        floatButtonToScroll.layer.cornerRadius = floatButtonToScroll.frame.height / 2
+        floatButtonToScroll.layer.masksToBounds = true
         
         // Setup the possition
         floatButtonToScroll.verticalAlignment = .bottom(bottomPadding + 28)
         floatButtonToScroll.horizontalAlignment = .right(8)
         
-        // Setup the contentOffsetY, the default is 220
-        // It's abbout to shown after the cell 90 dissapears
+        // Setup the contentOffsetY for scrolling, the default is 220
+        // it depends when you need the FloatButtonToScroll to show
         floatButtonToScroll.contentOffsetY = 4 * 45 // Cell * CellHeight
+        
+        // Set the delegate to self for the FloatButtonToScroll Action
+        // Or set your own target
+        floatButtonToScroll.delegate = self
         
         // Add the float Button where you want
         floatButtonToScroll.addToView(self.view)
