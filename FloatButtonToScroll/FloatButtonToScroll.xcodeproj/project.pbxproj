@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B54B879251751E20019DF2C /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B54B877251751E20019DF2C /* arrow_up.png */; };
-		7B54B87A251751E20019DF2C /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B54B878251751E20019DF2C /* arrow_down.png */; };
 		7BEC04C2250E969200B61FD6 /* FloatButtonToScroll.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BEC04C0250E969200B61FD6 /* FloatButtonToScroll.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7BEC04C9250E970000B61FD6 /* FloatButtonToScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC04C8250E970000B61FD6 /* FloatButtonToScroll.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7B54B877251751E20019DF2C /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
-		7B54B878251751E20019DF2C /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
 		7BEC04BD250E969200B61FD6 /* FloatButtonToScroll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FloatButtonToScroll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BEC04C0250E969200B61FD6 /* FloatButtonToScroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FloatButtonToScroll.h; sourceTree = "<group>"; };
 		7BEC04C1250E969200B61FD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -33,15 +29,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7B54B876251751BD0019DF2C /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				7B54B878251751E20019DF2C /* arrow_down.png */,
-				7B54B877251751E20019DF2C /* arrow_up.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		7BEC04B3250E969200B61FD6 = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +48,6 @@
 		7BEC04BF250E969200B61FD6 /* FloatButtonToScroll */ = {
 			isa = PBXGroup;
 			children = (
-				7B54B876251751BD0019DF2C /* Images */,
 				7BEC04C0250E969200B61FD6 /* FloatButtonToScroll.h */,
 				7BEC04C1250E969200B61FD6 /* Info.plist */,
 				7BEC04C8250E970000B61FD6 /* FloatButtonToScroll.swift */,
@@ -140,8 +126,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B54B879251751E20019DF2C /* arrow_up.png in Resources */,
-				7B54B87A251751E20019DF2C /* arrow_down.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

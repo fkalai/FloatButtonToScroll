@@ -14,10 +14,7 @@ Pod::Spec.new do |spec|
   
   spec.source       = { :git => "https://github.com/fkalai/FloatButtonToScroll.git", :tag => "1.1.0" }
   
-  spec.subspec 'FloatButtonToScroll' do |floatSources|
-    floatSources.source_files  = "FloatButtonToScroll/**/*.{h,m,swift}"
-    floatSources.resources = "FloatButtonToScroll/Images/*.png"
-  end
+  spec.source_files  = "FloatButtonToScroll/**/*.{h,m,swift}"
   
   spec.swift_versions = "5.0"
 
