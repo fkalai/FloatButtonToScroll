@@ -5,8 +5,10 @@
 **An elegant and beautiful FloatButtonToScroll which is easily sets in any view with UITableView for iOS apps based on Material Design Guidelines.**
 
 | ![Screenshots](https://github.com/fkalai/FloatButtonToScroll/blob/master/art/custom_FloatButtonToScroll.png) | ![Screenshots](https://github.com/fkalai/FloatButtonToScroll/blob/master/art/default_FloatButtonToScroll.png) |
-![Screenshots](https://github.com/fkalai/FloatButtonToScroll/blob/master/art/size_FloatButtonToScroll.png) |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| ---------------------------------------- | ---------------------------------------- |
+
+| ![Screenshots](https://github.com/fkalai/FloatButtonToScroll/blob/master/art/size_FloatButtonToScroll.png) |
+| ---------------------------------------- |
 
 
 ## Requirement
