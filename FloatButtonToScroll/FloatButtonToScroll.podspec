@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "FloatButtonToScroll"
-  spec.version      = "1.1.1"
+  spec.version      = "1.1.2"
   spec.summary      = "This is such a FloatButtonToScroll framework. Power!"
   spec.description  = "This is an amazingly Floating Button to Scroll on top or bottom framework. Add it in any view you like very easily!"
   spec.homepage     = "https://github.com/fkalai/FloatButtonToScroll"
@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
 
   spec.platform     = :ios, "10.0"
   
-  spec.source       = { :git => "https://github.com/fkalai/FloatButtonToScroll.git", :tag => "1.1.1" }
+  spec.source       = { :git => "https://github.com/fkalai/FloatButtonToScroll.git", :tag => "1.1.2" }
   
   spec.source_files  = "FloatButtonToScroll/**/*.{h,m,swift}"
   

@@ -58,7 +58,7 @@ public enum ScrollPosition {
 
 @objc public protocol FloatButtonToScrollDelegate {
     
-    func didPressBackToTop(_ button: FloatButtonToScroll)
+    func didTapButtonToScroll(_ button: FloatButtonToScroll)
 }
 
 // MARK: - Float ButtonToScroll
@@ -79,7 +79,7 @@ public class FloatButtonToScroll: UIButton {
     open weak var delegate: FloatButtonToScrollDelegate? {
         
         didSet {
-            self.addTarget(self, action: #selector(backToTopButtonTouchUpInside), for: .touchUpInside)
+            self.addTarget(self, action: #selector(backToButtonPressed), for: .touchUpInside)
         }
     }
     
@@ -313,9 +313,9 @@ public class FloatButtonToScroll: UIButton {
     }
         
     // MARK: - 🎮 Action
-    @objc func backToTopButtonTouchUpInside() {
+    @objc func backToButtonPressed() {
         
-        delegate?.didPressBackToTop(self)
+        delegate?.didTapButtonToScroll(self)
     }
     
     // MARK: - 🚀 Animations
