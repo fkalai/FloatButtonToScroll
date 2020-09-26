@@ -158,7 +158,7 @@ public class FloatButtonToScroll: UIButton {
             
             return constraints
         
-        /// `Top` position
+        /// `Top` positions
         case (.right(let trailing), .top(let top)):
             
             trailingConstraint = parent.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailing)
@@ -212,7 +212,7 @@ public class FloatButtonToScroll: UIButton {
      */
     public init() {
         super.init(frame: CGRect(x: 0, y: 0, width: size, height: size))
-        self.alpha = 0
+        setupPropertiesButton()
     }
     
     /**
@@ -221,7 +221,7 @@ public class FloatButtonToScroll: UIButton {
     public init(size: CGFloat) {
         self.size = size
         super.init(frame: CGRect(x: 0, y: 0, width: size, height: size))
-        self.alpha = 0
+        setupPropertiesButton()
     }
     
     /**
@@ -231,7 +231,13 @@ public class FloatButtonToScroll: UIButton {
         super.init(frame: frame)
         size = frame.height
         widthSize = frame.width
+        setupPropertiesButton()
+    }
+    
+    private func setupPropertiesButton() {
+        
         self.alpha = 0
+        self.imageView?.contentMode = .scaleAspectFit
     }
     
     /**
@@ -252,18 +258,17 @@ public class FloatButtonToScroll: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - 🆘 Add Subview
+    // MARK: - 🆘 Set target View ✌🏻
     /**
      With out using this func the FloatButtonToScroll will never
      be shown on the view.
      */
-    public func addToView(_ view: UIView) {
+    public func setTargetView(view: UIView) {
         
         self.view = view
         view.addSubview(self)
-        self.imageView?.contentMode = .scaleAspectFit
     }
-    
+        
     /**
      Just for checking that our button does not contain any Retain Cycle
      */
@@ -307,7 +312,7 @@ public class FloatButtonToScroll: UIButton {
         }
     }
         
-    // MARK: - 🤹‍♀️ Action
+    // MARK: - 🎮 Action
     @objc func backToTopButtonTouchUpInside() {
         
         delegate?.didPressBackToTop(self)

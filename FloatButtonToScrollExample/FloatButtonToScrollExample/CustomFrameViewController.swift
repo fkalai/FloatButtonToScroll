@@ -60,7 +60,7 @@ class CustomFrameViewController: UIViewController {
                 
         // Finally with addToView() we say the FloatButtonToScroll in which view
         // will be added as a subview
-        floatButtonToScroll.addToView(self.view)
+        floatButtonToScroll.setTargetView(view: self.view)
         
         tableView.reloadData()
         tableView.scrollTableViewToBottom(animated: false)

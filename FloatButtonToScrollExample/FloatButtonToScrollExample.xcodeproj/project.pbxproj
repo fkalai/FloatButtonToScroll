@@ -17,12 +17,9 @@
 		7BA9F56A25114CAB002626EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BA9F56825114CAB002626EE /* Main.storyboard */; };
 		7BA9F56C25114CAD002626EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA9F56B25114CAD002626EE /* Assets.xcassets */; };
 		7BA9F56F25114CAD002626EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BA9F56D25114CAD002626EE /* LaunchScreen.storyboard */; };
-		F260E5F5548E7BC6A3A32C28 /* Pods_FloatButtonToScrollExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB84295080EDFBF3C930899 /* Pods_FloatButtonToScrollExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		515E447050E6EAAA99A6C1A9 /* Pods-FloatButtonToScrollExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FloatButtonToScrollExample.release.xcconfig"; path = "Target Support Files/Pods-FloatButtonToScrollExample/Pods-FloatButtonToScrollExample.release.xcconfig"; sourceTree = "<group>"; };
-		6CB84295080EDFBF3C930899 /* Pods_FloatButtonToScrollExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FloatButtonToScrollExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B54B874251749110019DF2C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		7B54B87D2517B3040019DF2C /* CustomFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFrameViewController.swift; sourceTree = "<group>"; };
 		7B54B87F2517B4C10019DF2C /* DefaultPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPropertiesViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +32,6 @@
 		7BA9F56B25114CAD002626EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BA9F56E25114CAD002626EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BA9F57025114CAD002626EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DFF10FB177D0D3A72757420 /* Pods-FloatButtonToScrollExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FloatButtonToScrollExample.debug.xcconfig"; path = "Target Support Files/Pods-FloatButtonToScrollExample/Pods-FloatButtonToScrollExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +39,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F260E5F5548E7BC6A3A32C28 /* Pods_FloatButtonToScrollExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +51,6 @@
 				7BA9F56125114CAB002626EE /* FloatButtonToScrollExample */,
 				7BA9F56025114CAB002626EE /* Products */,
 				F3560313C1B958606CF8DF3A /* Pods */,
-				9D7A620173755F345147BD49 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,19 +80,9 @@
 			path = FloatButtonToScrollExample;
 			sourceTree = "<group>";
 		};
-		9D7A620173755F345147BD49 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6CB84295080EDFBF3C930899 /* Pods_FloatButtonToScrollExample.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F3560313C1B958606CF8DF3A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8DFF10FB177D0D3A72757420 /* Pods-FloatButtonToScrollExample.debug.xcconfig */,
-				515E447050E6EAAA99A6C1A9 /* Pods-FloatButtonToScrollExample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -110,11 +94,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BA9F57325114CAD002626EE /* Build configuration list for PBXNativeTarget "FloatButtonToScrollExample" */;
 			buildPhases = (
-				44164AC99FFA9D7F3848ED99 /* [CP] Check Pods Manifest.lock */,
 				7BA9F55B25114CAB002626EE /* Sources */,
 				7BA9F55C25114CAB002626EE /* Frameworks */,
 				7BA9F55D25114CAB002626EE /* Resources */,
-				F4829364981BBCF8C712627F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,48 +152,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		44164AC99FFA9D7F3848ED99 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FloatButtonToScrollExample-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F4829364981BBCF8C712627F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FloatButtonToScrollExample/Pods-FloatButtonToScrollExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FloatButtonToScrollExample/Pods-FloatButtonToScrollExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FloatButtonToScrollExample/Pods-FloatButtonToScrollExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7BA9F55B25114CAB002626EE /* Sources */ = {
@@ -366,7 +306,6 @@
 		};
 		7BA9F57425114CAD002626EE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DFF10FB177D0D3A72757420 /* Pods-FloatButtonToScrollExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -385,7 +324,6 @@
 		};
 		7BA9F57525114CAD002626EE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 515E447050E6EAAA99A6C1A9 /* Pods-FloatButtonToScrollExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

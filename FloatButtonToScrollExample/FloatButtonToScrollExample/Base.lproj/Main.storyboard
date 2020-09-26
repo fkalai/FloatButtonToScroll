@@ -121,9 +121,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yst-y6-qoT" secondAttribute="trailing" id="7pl-pp-gLp"/>
-                            <constraint firstItem="xlA-e0-BV3" firstAttribute="top" secondItem="yst-y6-qoT" secondAttribute="bottom" id="djp-7K-hwt"/>
+                            <constraint firstAttribute="bottom" secondItem="yst-y6-qoT" secondAttribute="bottom" id="djp-7K-hwt"/>
                             <constraint firstItem="yst-y6-qoT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mE3-c4-ZIG"/>
-                            <constraint firstItem="yst-y6-qoT" firstAttribute="top" secondItem="Wdb-LD-iZY" secondAttribute="bottom" id="xsZ-uA-Xcz"/>
+                            <constraint firstItem="yst-y6-qoT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xsZ-uA-Xcz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -184,9 +184,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="yS5-L9-upK" firstAttribute="leading" secondItem="Rf1-We-A86" secondAttribute="leading" id="72K-Ix-TSn"/>
-                            <constraint firstItem="yS5-L9-upK" firstAttribute="top" secondItem="LD2-1l-zYS" secondAttribute="bottom" id="IC4-mo-pW6"/>
+                            <constraint firstItem="yS5-L9-upK" firstAttribute="top" secondItem="Rf1-We-A86" secondAttribute="top" id="IC4-mo-pW6"/>
                             <constraint firstAttribute="trailing" secondItem="yS5-L9-upK" secondAttribute="trailing" id="ifI-9O-rkB"/>
-                            <constraint firstItem="4WZ-aa-AkY" firstAttribute="top" secondItem="yS5-L9-upK" secondAttribute="bottom" id="q7e-Bx-slN"/>
+                            <constraint firstAttribute="bottom" secondItem="yS5-L9-upK" secondAttribute="bottom" id="q7e-Bx-slN"/>
                         </constraints>
                     </view>
                     <connections>

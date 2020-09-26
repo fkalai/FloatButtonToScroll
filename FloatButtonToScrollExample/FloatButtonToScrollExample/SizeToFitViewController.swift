@@ -60,7 +60,7 @@ class SizeToFitViewController: UIViewController {
         floatButtonToScroll.delegate = self
         
         // Add the float Button where you want
-        floatButtonToScroll.addToView(self.view)
+        floatButtonToScroll.setTargetView(view: self.view)
         
         tableView.reloadData()
     }

@@ -1,6 +1,0 @@
-framework module FloatButtonToScroll {
-  umbrella header "FloatButtonToScroll-umbrella.h"
-
-  export *
-  module * { export * }
-}
