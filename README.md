@@ -45,7 +45,7 @@ pod 'FloatButtonToScroll'
   
   floatButtonToScroll.setTargetView(view: view)
 ```
-**Note**: `floatButtonToScroll.setTargetView(view: view)` should be called after setting verticalAlignment and horizontalAlignment otherwise the FloatButtonToScroll will be set with the default constraints. You can set the FloatButtonToScroll example inside UIViewController's  on `viewWillAppear()`, `viewDidAppear()` or `viewDidLoad()` function. Also **remember** that the button at the first time its alpha is 0, so you have to expect that you will not show it anywhere in the screen. 
+**Note**: `floatButtonToScroll.setTargetView(view: view)` should be called after setting verticalAlignment and horizontalAlignment otherwise the FloatButtonToScroll will be set with the default constraints. You can set the FloatButtonToScroll example inside UIViewController's  on `viewWillAppear()`, `viewDidAppear()` or `viewDidLoad()` function. Also **remember** that the button at the first time its alpha is 0, so you have to expect that you will not show it anywhere on your screen. 
 
 ### Supported initializations
 There are three type of init() supported.
@@ -59,7 +59,7 @@ There are three type of init() supported.
   FloatButtonToScroll(frame: frame) // set CGRect(x: 0, y: 0, width: 58, height: 36)
 ```
 
-### Handle Scroll FloatButtonToScroll
+### Handle On Scroll FloatButtonToScroll animated show() & hide()
 ```swift
   // Your UITableView has a delegation for scrolling methods
   // For example you can set the scrolling checker while user scroll from top to bottom
