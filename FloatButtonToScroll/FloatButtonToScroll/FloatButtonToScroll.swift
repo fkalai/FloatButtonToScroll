@@ -54,6 +54,12 @@ public enum ScrollPosition {
     case bottom
 }
 
+public enum HolderRadius {
+    
+    case cycle
+    case custom(CGFloat)
+}
+
 // MARK: - 🕹 Action Protocol
 
 @objc public protocol FloatButtonToScrollDelegate {
@@ -76,6 +82,26 @@ public class FloatButtonToScroll: UIButton {
     public var verticalAlignment: VerticalAlignment = .top(20)
     private var scrollPosition: ScrollPosition = .top
     
+    // MARK: Radius target
+    open var targetHolderRadius: HolderRadius? {
+        
+        didSet {
+            guard let holderRadius = targetHolderRadius else { return }
+            
+            switch holderRadius {
+            case .cycle:
+                
+                self.layer.cornerRadius = self.frame.height / 2
+                break
+            case .custom(let radius):
+                
+                self.layer.cornerRadius = radius
+                break
+            }
+        }
+    }
+    
+    // MARK: Delegate
     open weak var delegate: FloatButtonToScrollDelegate? {
         
         didSet {
